@@ -7,8 +7,8 @@ public class DisciplinaAlunoDocente {
     private Integer idAluno;
     private Integer idDocente;
     private Integer idDisciplina;
-    private LocalDate dataInicio;
-    private LocalDate dataFim;
+    private Date dataInicio;
+    private Date dataFim;
     private Integer nota;
 
     public DisciplinaAlunoDocente() {
@@ -57,7 +57,7 @@ public class DisciplinaAlunoDocente {
         this.idDisciplina = idDisciplina;
     }
 
-    public LocalDate getDataInicio() {
+    public Date getDataInicio() {
         return dataInicio;
     }
 
@@ -65,7 +65,7 @@ public class DisciplinaAlunoDocente {
         this.dataInicio = dataInicio;
     }
 
-    public LocalDate getDataFim() {
+    public Date getDataFim() {
         return dataFim;
     }
 

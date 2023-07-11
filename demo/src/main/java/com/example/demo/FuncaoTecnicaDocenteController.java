@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import java.util.List;
 
 @Controller
 public class FuncaoTecnicaDocenteController {
@@ -64,3 +65,5 @@ public class FuncaoTecnicaDocenteController {
                 "DELETE FROM funcao_tecnica_docente WHERE id = ?",
                 id);
         return "redirect:/funcoes-tecnicas-docente"; // Redirect to the funcoes-tecnicas-doc
+    }
+}

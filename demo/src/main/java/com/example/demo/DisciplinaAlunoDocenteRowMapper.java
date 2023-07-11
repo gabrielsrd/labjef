@@ -4,7 +4,6 @@ import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
 
 public class DisciplinaAlunoDocenteRowMapper implements RowMapper<DisciplinaAlunoDocente> {
 
@@ -15,9 +14,9 @@ public class DisciplinaAlunoDocenteRowMapper implements RowMapper<DisciplinaAlun
         disciplinaAlunoDocente.setIdAluno(rs.getInt("id_aluno"));
         disciplinaAlunoDocente.setIdDocente(rs.getInt("id_docente"));
         disciplinaAlunoDocente.setIdDisciplina(rs.getInt("id_disc"));
-        disciplinaAlunoDocente.setDataInicio(rs.getDate("data_inic").toLocalDate());
+        disciplinaAlunoDocente.setDataInicio(rs.getDate("data_inic"));
         if (rs.getDate("data_fim") != null) {
-            disciplinaAlunoDocente.setDataFim(rs.getDate("data_fim").toLocalDate());
+            disciplinaAlunoDocente.setDataFim(rs.getDate("data_fim"));
         }
         if (rs.getObject("nota") != null) {
             disciplinaAlunoDocente.setNota(rs.getInt("nota"));
