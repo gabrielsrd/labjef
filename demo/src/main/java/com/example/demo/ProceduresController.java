@@ -45,4 +45,12 @@ public class ProceduresController {
         model.addAttribute("listaP3top", rows1);
         return "p3"; // Name of the HTML template file
     }
+
+    @GetMapping("/top-docentes")
+    public String getTopDocentes(Model model) {
+        String sql = "SELECT * FROM listar_docentes_mais_ministraram()";
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+        model.addAttribute("listaP4", rows);
+        return "p4"; // Name of the HTML template file
+    }
 }

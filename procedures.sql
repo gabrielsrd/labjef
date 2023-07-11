@@ -75,14 +75,22 @@ $$ LANGUAGE plpgsql;
 
 -- 4
 CREATE OR REPLACE FUNCTION listar_docentes_mais_ministraram() RETURNS TABLE (
+    docente_id INT,
     docente_nome VARCHAR,
+    total_disciplinas BIGINT
 ) AS $$
 BEGIN
     RETURN QUERY
-    SELECT rel.nome_doc
-    FROM disciplinas_periodo() AS disc_per, rel_disciplina_aluno_docente as rel
-    WHERE rel.id_disc = disc_per.id AND rel.id_docente = 
-    ORDER BY COUNT(*) DESC
+    SELECT d.id, u.nome, COUNT(*) AS total_disciplinas
+    FROM (
+        SELECT DISTINCT id_docente, id_disc, data_inic
+        FROM rel_disciplina_aluno_docente
+    ) as r
+    JOIN docente d ON r.id_docente = d.id
+    JOIN usuario u ON d.id_usuario = u.id
+    WHERE r.data_inic BETWEEN '2020-05-01' AND '2023-05-31'
+    GROUP BY d.id, u.nome
+    ORDER BY total_disciplinas DESC
     LIMIT 5;
 END;
 $$ LANGUAGE plpgsql;
