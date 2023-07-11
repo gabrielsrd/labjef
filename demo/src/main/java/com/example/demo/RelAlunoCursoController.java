@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -40,13 +41,21 @@ public class RelAlunoCursoController {
         return "relAlunoCurso";
     }
 
-@   PostMapping("/relAlunoCurso")
+    @PostMapping("/relAlunoCurso")
     public String submitRelAlunoCurso(@ModelAttribute RelAlunoCurso relAlunoCurso, Model model) {
+        Date dataFim = null;
+        if (relAlunoCurso.getDataFim() != "") {// string to date
+            dataFim = Date.valueOf(relAlunoCurso.getDataFim());
+        }
+        // print
+        System.out.println("*&^&*^&*^*&^&*&^*^&*^*&^*&^*&&^*&^*^*&^*&^*&^*&^*");
+        System.out.println(relAlunoCurso.getDataFim().toString());
+
         if (relAlunoCurso.getId() != null && relAlunoCurso.getId() > 0) {
             jdbcTemplate.update(
                     "UPDATE rel_aluno_curso SET data_inic = ?, data_fim = ?, nota_ingresso = ?, id_curso = ?, id_aluno = ? WHERE id = ?",
                     relAlunoCurso.getDataInicio(),
-                    relAlunoCurso.getDataFim(),
+                    dataFim,
                     relAlunoCurso.getNotaIngresso(),
                     relAlunoCurso.getIdCurso(),
                     relAlunoCurso.getIdAluno(),
@@ -55,7 +64,7 @@ public class RelAlunoCursoController {
             String sql = "INSERT INTO rel_aluno_curso (data_inic, data_fim, nota_ingresso, id_curso, id_aluno) VALUES (?, ?, ?, ?, ?)";
             Object[] values = {
                     relAlunoCurso.getDataInicio(),
-                    relAlunoCurso.getDataFim(),
+                    dataFim,
                     relAlunoCurso.getNotaIngresso(),
                     relAlunoCurso.getIdCurso(),
                     relAlunoCurso.getIdAluno(),

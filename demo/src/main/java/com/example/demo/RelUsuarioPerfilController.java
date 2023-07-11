@@ -72,6 +72,6 @@ public class RelUsuarioPerfilController {
         jdbcTemplate.update(
                 "DELETE FROM rel_usuario_perfil WHERE id = ?",
                 id);
-        return "redirect:/relUsuarioPerfil";
+        return "redirect:/relUsuarioPerfis";
     }
 }

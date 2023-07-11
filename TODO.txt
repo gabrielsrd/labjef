@@ -1,0 +1,6 @@
+Codigo curso precisa ser VARCHAR
+Talvez colocar nome para os cursos
+Codigo servico precisa ser VARCHAR
+Descrição serciço precisa ser VARCHAR maior
+Código da disciplina precisa ser VARCHAR
+Arrumar nomes dos htmls

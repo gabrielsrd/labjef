@@ -12,8 +12,8 @@ public class RelAlunoCursoRowMapper implements RowMapper<RelAlunoCurso> {
         RelAlunoCurso relAlunoCurso = new RelAlunoCurso();
         relAlunoCurso.setId(rs.getInt("id"));
         relAlunoCurso.setDataInicio(rs.getDate("data_inic"));
-        relAlunoCurso.setDataFim(rs.getDate("data_fim"));
-        relAlunoCurso.setNotaIngresso(rs.getInt("nota_ingresso"));
+        relAlunoCurso.setDataFim(rs.getString("data_fim"));
+        relAlunoCurso.setNotaIngresso(rs.getFloat("nota_ingresso"));
         relAlunoCurso.setIdCurso(rs.getInt("id_curso"));
         relAlunoCurso.setIdAluno(rs.getInt("id_aluno"));
         return relAlunoCurso;

@@ -72,6 +72,6 @@ public class RelDisciplinaCursoController {
         jdbcTemplate.update(
                 "DELETE FROM rel_disciplina_curso WHERE id = ?",
                 id);
-        return "redirect:/relDisciplinaCurso";
+        return "redirect:/relDisciplinaCursos";
     }
 }

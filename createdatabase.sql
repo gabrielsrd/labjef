@@ -22,7 +22,7 @@ CREATE TABLE perfil (
 
 CREATE TABLE servico (
     id SERIAL PRIMARY KEY,
-    descricao VARCHAR(30) NOT NULL,
+    descricao VARCHAR(300) NOT NULL,
     tipo_serv VARCHAR(30) NOT NULL,
     cod_serv INT NOT NULL,
     id_perfil INT NOT NULL,

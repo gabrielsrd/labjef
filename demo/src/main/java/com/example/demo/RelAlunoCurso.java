@@ -6,8 +6,8 @@ public class RelAlunoCurso {
 
     private Integer id;
     private Date dataInicio;
-    private Date dataFim;
-    private Integer notaIngresso;
+    private String dataFim;
+    private Float notaIngresso;
     private Integer idCurso;
     private Integer idAluno;
 
@@ -35,19 +35,19 @@ public class RelAlunoCurso {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFim() {
+    public String getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
     }
 
-    public Integer getNotaIngresso() {
+    public Float getNotaIngresso() {
         return notaIngresso;
     }
 
-    public void setNotaIngresso(Integer notaIngresso) {
+    public void setNotaIngresso(Float notaIngresso) {
         this.notaIngresso = notaIngresso;
     }
 
