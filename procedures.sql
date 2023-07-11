@@ -32,41 +32,57 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
 -- 3
---CREATE FUNCTION listar_disciplinas_oferecidas() RETURNS TABLE (
---    disciplina VARCHAR,
---    total_alunos INTEGER,
---    total_professores INTEGER,
---    total_oferecimentos INTEGER
---) AS $$
---BEGIN
---    RETURN QUERY
---    SELECT d.nome AS disciplina,
---           COUNT(DISTINCT dad.id_aluno) AS total_alunos,
---           COUNT(DISTINCT dad.id_docente) AS total_professores,
---           COUNT(DISTINCT dad.data_inic) AS total_oferecimentos
---    FROM rel_disciplina_aluno_docente AS dad, disciplina AS d
---    WHERE dad.id_disc = d.id
---    GROUP BY dad.id_disc, d.nome
---    ORDER BY COUNT(DISTINCT dad.data_inic) DESC
---    LIMIT 5;
---END;
---$$ LANGUAGE plpgsql;
-
-CREATE FUNCTION listar_disciplinas_oferecidas() RETURNS TABLE (
-    disciplina_id INT
-    disciplina VARCHAR
+CREATE OR REPLACE FUNCTION listar_disciplinas_oferecidas() RETURNS TABLE (
+    disciplina_id INT,
+    nome_disc VARCHAR,
+    nome_al VARCHAR,
+    nome_doc VARCHAR,
+    data_inic DATE
 ) AS $$
 BEGIN
     RETURN QUERY
-    SELECT d.id as disciplina_id, d.nome AS disciplina
-    FROM rel_disciplina_aluno_docente, disciplina as d
-    JOIN rel_disciplina_aluno_docente dad ON dad.id_disc = d.id
-    ORDER BY COUNT(DISTINCT dad.id_disc) DESC
-    GROUP BY d.nome
-    LIMIT 5;
+    SELECT id_disc as disciplina_id,  disciplina.nome as nome_disc, us1.nome as nome_al, us2.nome as nome_doc, rel.data_inic as data_inic
+    FROM lista_5() AS lim, usuario AS us1, usuario AS us2, aluno, docente, rel_disciplina_aluno_docente AS rel, disciplina
+    WHERE us1.id = aluno.id_usuario 
+        AND us2.id = docente.id_usuario 
+        AND aluno.id = rel.id_aluno 
+        AND docente.id = rel.id_docente 
+        AND rel.id_disc = lim.disciplina_id
+        AND disciplina.id = lim.disciplina_id
+    ORDER BY lim.quant DESC;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION lista_5() RETURNS TABLE (
+    disciplina_id INTEGER,
+    disciplina VARCHAR,
+    quant BIGINT
+) AS $$ 
+BEGIN
+        RETURN QUERY
+        SELECT dad.id_disc AS disciplina_id, disciplina.nome as disciplina, COUNT(*) AS quant
+        FROM (
+            SELECT DISTINCT data_inic, id_disc
+            FROM rel_disciplina_aluno_docente
+        ) AS dad
+        JOIN disciplina ON disciplina.id = dad.id_disc
+        GROUP BY dad.id_disc, disciplina.nome
+        ORDER BY COUNT(*) DESC
+        LIMIT 5;
 END;
 $$ LANGUAGE plpgsql;
 
 -- 4
+CREATE OR REPLACE FUNCTION listar_docentes_mais_ministraram() RETURNS TABLE (
+    docente_nome VARCHAR,
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT rel.nome_doc
+    FROM disciplinas_periodo() AS disc_per, rel_disciplina_aluno_docente as rel
+    WHERE rel.id_disc = disc_per.id AND rel.id_docente = 
+    ORDER BY COUNT(*) DESC
+    LIMIT 5;
+END;
+$$ LANGUAGE plpgsql;

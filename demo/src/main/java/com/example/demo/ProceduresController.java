@@ -35,11 +35,14 @@ public class ProceduresController {
         return "p2"; // Name of the HTML template file
     }
 
-    @GetMapping("/servicos-usados")
+    @GetMapping("/top-disciplinas")
     public String getTopDisciplinas(Model model) {
-        String sql = "SELECT * FROM get_total_servicos_por_perfil()";
+        String sql = "SELECT * FROM listar_disciplinas_oferecidas()";
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
-        model.addAttribute("listaP2", rows);
-        return "p2"; // Name of the HTML template file
+        model.addAttribute("listaP3", rows);
+        sql = "SELECT * FROM lista_5()";
+        List<Map<String, Object>> rows1 = jdbcTemplate.queryForList(sql);
+        model.addAttribute("listaP3top", rows1);
+        return "p3"; // Name of the HTML template file
     }
 }
