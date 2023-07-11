@@ -10,7 +10,7 @@ public class ServicoRowMapper implements RowMapper<Servico> {
     @Override
     public Servico mapRow(ResultSet rs, int rowNum) throws SQLException {
         Servico servico = new Servico();
-        servico.setIdServ(rs.getInt("id_serv"));
+        servico.setId(rs.getInt("id"));
         servico.setDescricao(rs.getString("descricao"));
         servico.setTipoServ(rs.getString("tipo_serv"));
         servico.setCodServ(rs.getInt("cod_serv"));

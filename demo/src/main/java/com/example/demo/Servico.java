@@ -2,30 +2,30 @@ package com.example.demo;
 
 public class Servico {
 
-    private Integer idServ;
+    private Integer id;
     private String descricao;
     private String tipoServ;
     private Integer codServ;
     private Integer idPerfil;
 
     public Servico() {
-        this.idServ = -1;
+        this.id = -1;
     }
 
-    public Servico(Integer idServ, String descricao, String tipoServ, Integer codServ, Integer idPerfil) {
-        this.idServ = idServ;
+    public Servico(Integer id, String descricao, String tipoServ, Integer codServ, Integer idPerfil) {
+        this.id = id;
         this.descricao = descricao;
         this.tipoServ = tipoServ;
         this.codServ = codServ;
         this.idPerfil = idPerfil;
     }
 
-    public Integer getIdServ() {
-        return idServ;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdServ(Integer idServ) {
-        this.idServ = idServ;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescricao() {

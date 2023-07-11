@@ -36,7 +36,7 @@ public class ServicoController {
 
     @GetMapping("/servico/{id}")
     public String editServico(Model model, @PathVariable Integer id) {
-        Servico servico = jdbcTemplate.queryForObject("SELECT * FROM servico WHERE id_serv = ?",
+        Servico servico = jdbcTemplate.queryForObject("SELECT * FROM servico WHERE id = ?",
                 new ServicoRowMapper(), id);
         model.addAttribute("servico", servico);
         return "servico"; // Assuming you have a servico.html template
@@ -44,14 +44,14 @@ public class ServicoController {
 
     @PostMapping("/servico")
     public String submitServico(@ModelAttribute Servico servico, Model model) {
-        if (servico.getIdServ() != null && servico.getIdServ() > 0) {
+        if (servico.getId() != null && servico.getId() > 0) {
             jdbcTemplate.update(
-                    "UPDATE servico SET descricao = ?, tipo_serv = ?, cod_serv = ?, id_perfil = ? WHERE id_serv = ?",
+                    "UPDATE servico SET descricao = ?, tipo_serv = ?, cod_serv = ?, id_perfil = ? WHERE id = ?",
                     servico.getDescricao(),
                     servico.getTipoServ(),
                     servico.getCodServ(),
                     servico.getIdPerfil(),
-                    servico.getIdServ());
+                    servico.getId());
         } else {
             jdbcTemplate.update(
                     "INSERT INTO servico (descricao, tipo_serv, cod_serv, id_perfil) VALUES (?, ?, ?, ?)",
@@ -66,7 +66,7 @@ public class ServicoController {
     @DeleteMapping("/servico/{id}")
     public String deleteServico(@PathVariable Integer id) {
         jdbcTemplate.update(
-                "DELETE FROM servico WHERE id_serv = ?",
+                "DELETE FROM servico WHERE id = ?",
                 id);
         return "redirect:/servicos"; // Redirect to the servicos endpoint
     }
