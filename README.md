@@ -11,3 +11,5 @@ exit
 then, run this:
 psql -U admin labjefdb -f createdatabase.sql
 
+to import backup:
+psql -U seu_usuario -h localhost -d seu_banco_de_dados < esquema.sql
