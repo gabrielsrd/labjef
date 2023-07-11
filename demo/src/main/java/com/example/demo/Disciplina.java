@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Disciplina {
 
     private Integer id;
-    private Integer codigo;
+    private String codigo;
     private String ementa;
     private Date dataCriacao;
     private String nome;
@@ -26,11 +26,11 @@ public class Disciplina {
         this.id = id;
     }
 
-    public Integer getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

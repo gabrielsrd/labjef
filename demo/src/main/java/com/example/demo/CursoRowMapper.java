@@ -11,7 +11,7 @@ public class CursoRowMapper implements RowMapper<Curso> {
     public Curso mapRow(ResultSet rs, int rowNum) throws SQLException {
         Curso curso = new Curso();
         curso.setId(rs.getInt("id"));
-        curso.setCodCurso(rs.getInt("cod_curso"));
+        curso.setCodCurso(rs.getString("cod_curso"));
         return curso;
     }
 }

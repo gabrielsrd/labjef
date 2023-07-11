@@ -2,20 +2,20 @@ package com.example.demo;
 
 import java.sql.Date;
 
-public class DisciplinaAlunoDocente {
+public class RelDisciplinaAlunoDocente {
     private Integer id;
     private Integer idAluno;
     private Integer idDocente;
     private Integer idDisciplina;
     private Date dataInicio;
-    private Date dataFim;
-    private Integer nota;
+    private String dataFim;
+    private String nota;
 
-    public DisciplinaAlunoDocente() {
+    public RelDisciplinaAlunoDocente() {
         this.id = -1;
     }
 
-    public DisciplinaAlunoDocente(Integer id, Integer idAluno, Integer idDocente, Integer idDisciplina, Date dataInicio, Date dataFim, Integer nota) {
+    public RelDisciplinaAlunoDocente(Integer id, Integer idAluno, Integer idDocente, Integer idDisciplina, Date dataInicio, String dataFim, String nota) {
         this.id = id;
         this.idAluno = idAluno;
         this.idDocente = idDocente;
@@ -65,19 +65,19 @@ public class DisciplinaAlunoDocente {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFim() {
+    public String getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
     }
 
-    public Integer getNota() {
+    public String getNota() {
         return nota;
     }
 
-    public void setNota(Integer nota) {
+    public void setNota(String nota) {
         this.nota = nota;
     }
 }

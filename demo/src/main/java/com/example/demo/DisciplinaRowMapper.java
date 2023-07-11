@@ -10,7 +10,7 @@ public class DisciplinaRowMapper implements RowMapper<Disciplina> {
     public Disciplina mapRow(ResultSet rs, int rowNum) throws SQLException {
         Disciplina disciplina = new Disciplina();
         disciplina.setId(rs.getInt("id"));
-        disciplina.setCodigo(rs.getInt("codigo"));
+        disciplina.setCodigo(rs.getString("codigo"));
         disciplina.setEmenta(rs.getString("ementa"));
         disciplina.setDataCriacao(rs.getDate("data_criacao"));
         disciplina.setNome(rs.getString("nome"));

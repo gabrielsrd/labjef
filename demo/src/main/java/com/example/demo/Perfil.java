@@ -4,7 +4,7 @@ public class Perfil {
   
     private Integer id;
     private String tipoPerf;
-    private Integer codPerf;
+    private String codPerf;
 
     public Perfil() {
         this.id = -1;
@@ -30,11 +30,11 @@ public class Perfil {
         this.tipoPerf = tipoPerf;
     }
 
-    public Integer getCodPerf() {
+    public String getCodPerf() {
         return codPerf;
     }
 
-    public void setCodPerf(Integer codPerf) {
+    public void setCodPerf(String codPerf) {
         this.codPerf = codPerf;
     }
 }

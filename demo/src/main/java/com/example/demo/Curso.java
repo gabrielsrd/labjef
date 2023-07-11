@@ -2,13 +2,13 @@ package com.example.demo;
 
 public class Curso {
     private Integer id;
-    private Integer codCurso;
+    private String codCurso;
 
     public Curso() {
         this.id = -1;
     }
 
-    public Curso(Integer id, Integer codCurso) {
+    public Curso(Integer id, String codCurso) {
         this.id = id;
         this.codCurso = codCurso;
     }
@@ -21,11 +21,11 @@ public class Curso {
         this.id = id;
     }
 
-    public Integer getCodCurso() {
+    public String getCodCurso() {
         return codCurso;
     }
 
-    public void setCodCurso(Integer codCurso) {
+    public void setCodCurso(String codCurso) {
         this.codCurso = codCurso;
     }
 }

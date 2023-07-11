@@ -12,7 +12,7 @@ public class PerfilRowMapper implements RowMapper<Perfil> {
         Perfil perfil = new Perfil();
         perfil.setId(rs.getInt("id"));
         perfil.setTipoPerf(rs.getString("tipo_perf"));
-        perfil.setCodPerf(rs.getInt("cod_perf"));
+        perfil.setCodPerf(rs.getString("cod_perf"));
         return perfil;
     }
 }

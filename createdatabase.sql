@@ -16,15 +16,15 @@ CREATE TABLE usuario (
 CREATE TABLE perfil (
     id SERIAL PRIMARY KEY,
     tipo_perf VARCHAR(30) NOT NULL,
-    cod_perf INT NOT NULL,
+    cod_perf VARCHAR(30) NOT NULL,
     UNIQUE (cod_perf)
 );
 
 CREATE TABLE servico (
     id SERIAL PRIMARY KEY,
-    descricao VARCHAR(300) NOT NULL,
+    descricao VARCHAR(1000d) NOT NULL,
     tipo_serv VARCHAR(30) NOT NULL,
-    cod_serv INT NOT NULL,
+    cod_serv VARCHAR(30) NOT NULL,
     id_perfil INT NOT NULL,
     FOREIGN KEY (id_perfil) REFERENCES perfil(id),
     UNIQUE (cod_serv)
@@ -32,13 +32,13 @@ CREATE TABLE servico (
 
 CREATE TABLE curso (
     id SERIAL PRIMARY KEY,
-    cod_curso INT NOT NULL UNIQUE,
+    cod_curso VARCHAR(30) NOT NULL UNIQUE,
     UNIQUE (cod_curso)
 );
 
 CREATE TABLE disciplina (
     id SERIAL PRIMARY KEY,
-    codigo INT NOT NULL UNIQUE,
+    codigo VARCHAR(30) NOT NULL UNIQUE,
     ementa VARCHAR(1000) NOT NULL,
     data_criacao DATE NOT NULL,
     nome VARCHAR(50) NOT NULL,
@@ -136,7 +136,7 @@ CREATE TABLE rel_disciplina_aluno_docente (
     id_disc INT NOT NULL,
     data_inic DATE NOT NULL,
     data_fim DATE NULL,
-    nota INT NULL,
+    nota FLOAT NULL,
     FOREIGN KEY (id_aluno) REFERENCES aluno(id),
     FOREIGN KEY (id_docente) REFERENCES docente(id),
     FOREIGN KEY (id_disc) REFERENCES disciplina(id),
@@ -147,7 +147,7 @@ CREATE TABLE rel_usuario_servico (
     id SERIAL PRIMARY KEY,
     id_servico INT NOT NULL,
     id_usuario INT NOT NULL,
-    data_time DATE NOT NULL,
+    data_time TIMESTAMP(3) NOT NULL,
     FOREIGN KEY (id_servico) REFERENCES servico(id),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id)
 );

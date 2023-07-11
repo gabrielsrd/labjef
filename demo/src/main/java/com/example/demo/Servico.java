@@ -5,14 +5,14 @@ public class Servico {
     private Integer id;
     private String descricao;
     private String tipoServ;
-    private Integer codServ;
+    private String codServ;
     private Integer idPerfil;
 
     public Servico() {
         this.id = -1;
     }
 
-    public Servico(Integer id, String descricao, String tipoServ, Integer codServ, Integer idPerfil) {
+    public Servico(Integer id, String descricao, String tipoServ, String codServ, Integer idPerfil) {
         this.id = id;
         this.descricao = descricao;
         this.tipoServ = tipoServ;
@@ -44,11 +44,11 @@ public class Servico {
         this.tipoServ = tipoServ;
     }
 
-    public Integer getCodServ() {
+    public String getCodServ() {
         return codServ;
     }
 
-    public void setCodServ(Integer codServ) {
+    public void setCodServ(String codServ) {
         this.codServ = codServ;
     }
 
